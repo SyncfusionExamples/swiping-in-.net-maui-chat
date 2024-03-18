@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfchat="clr-namespace:Syncfusion.Maui.Chat;assembly=Syncfusion.Maui.Chat"
+             xmlns:local="clr-namespace:ChatMaui"
+             x:Class="ChatMaui.MainPage">
+    
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <sfchat:SfChat x:Name="SfChat"              
+                    Messages="{Binding Messages}"     
+                    CurrentUser="{Binding CurrentUser}"
+                    AllowSwiping="True">
+            <sfchat:SfChat.StartSwipeTemplate>
+                <DataTemplate>
+                    <Grid BackgroundColor="LightBlue">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="65"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="edit.png" 
+                            Grid.Column="0"  
+                            HeightRequest="25"                       
+                            HorizontalOptions="Center">
+                        </Image>
+
+                        <Label Grid.Column="1"
+                            LineBreakMode="NoWrap"
+                            Text="EDIT"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </sfchat:SfChat.StartSwipeTemplate>
+
+            <sfchat:SfChat.EndSwipeTemplate>
+                <DataTemplate>
+                    <Grid BackgroundColor="LightPink">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="delete.png" 
+                               HeightRequest="25"
+                              Grid.Column="0"
+                              BackgroundColor="Transparent"                          
+                              HorizontalOptions="Center">
+                        </Image>
+
+                        <Label Grid.Column="1"
+                        BackgroundColor="Transparent"
+                        LineBreakMode="NoWrap"
+                        Text="DELETE"
+                        TextColor="White"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </sfchat:SfChat.EndSwipeTemplate>
+        </sfchat:SfChat>
+    </ContentPage.Content>
+</ContentPage>
